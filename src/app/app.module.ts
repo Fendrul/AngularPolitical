@@ -9,6 +9,11 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ToolbarComponent } from './modules/components/banner/toolbar/toolbar.component';
 import { ArgumentsComponent } from './modules/components/body/arguments/arguments.component';
 import { PresentationComponent } from './modules/components/body/presentation/presentation.component';
+import { DropdownComponentComponent } from './modules/components/dropdown-component/dropdown-component.component';
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {NgSelectModule} from "@ng-select/ng-select";
 
 @NgModule({
   declarations: [
@@ -17,13 +22,18 @@ import { PresentationComponent } from './modules/components/body/presentation/pr
     SearchBarComponent,
     ToolbarComponent,
     ArgumentsComponent,
-    PresentationComponent
+    PresentationComponent,
+    DropdownComponentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatInputModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    NgSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
