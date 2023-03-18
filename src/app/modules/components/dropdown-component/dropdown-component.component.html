@@ -1,0 +1,9 @@
+<div>
+  <button (click)="isOpen = !isOpen">{{ buttonText }}</button>
+  <div *ngIf="isOpen">
+    <label *ngFor="let option of options">
+      <input type="checkbox" [checked]="option.selected" (change)="toggleOption(option)">
+      {{ option.label }}
+    </label>
+  </div>
+</div>
