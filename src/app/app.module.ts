@@ -14,6 +14,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {NgSelectModule} from "@ng-select/ng-select";
+import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {NgSelectModule} from "@ng-select/ng-select";
     MatInputModule,
     MatSelectModule,
     MatCheckboxModule,
-    NgSelectModule
+    NgSelectModule,
+    NoopAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

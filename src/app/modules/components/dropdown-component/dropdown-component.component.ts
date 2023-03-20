@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {FormControl} from "@angular/forms";
-import {DropdownOption} from "../../../shared/models/DropdownOption";
+import {FormControl, FormGroup} from "@angular/forms";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-dropdown-component',
@@ -8,24 +8,14 @@ import {DropdownOption} from "../../../shared/models/DropdownOption";
   styleUrls: ['./dropdown-component.component.scss']
 })
 export class DropdownComponentComponent {
-  @Input() options!: DropdownOption[];
-  @Output() selectionChange = new EventEmitter<DropdownOption[]>();
-  isOpen = false;
+  @Input() options: string[] = [];
+  @Output() selectedOptions: EventEmitter<string[]> = new EventEmitter<string[]>();
+  optionsCtrl = new FormControl();
+  selectedOptions$: Observable<string[]> = this.optionsCtrl.valueChanges;
 
-  get buttonText(): string {
-    const selectedOptions = this.options.filter((option) => option.selected);
-    if (selectedOptions.length === 0) {
-      return 'sélectionner un filtre';
-    } else if (selectedOptions.length === 1) {
-      return selectedOptions[0].label;
-    } else {
-      return `${selectedOptions.length} filtres sélectionnés`;
-    }
+  constructor() {
+    this.selectedOptions$.subscribe((value) => {
+      this.selectedOptions.emit(value);
+    });
   }
-
-  toggleOption(option: DropdownOption): void {
-    option.selected = !option.selected;
-    this.selectionChange.emit(this.options);
-  }
-
 }
